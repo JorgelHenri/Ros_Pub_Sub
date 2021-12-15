@@ -49,14 +49,14 @@ include_directories(
   )
 
 ## Declare a C++ library
-# add_library(ros_pub src/ros_pub.cpp)
+add_library(ros_pub src/ros_pub.cpp)
 add_library(ros_sub src/ros_sub.cpp)
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(Ros_Pub
-#   ${catkin_LIBRARIES}
-#   ${Eigen_LIBRARIES}
-# )
+target_link_libraries(Ros_Pub
+  ${catkin_LIBRARIES}
+  ${Eigen_LIBRARIES}
+)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(Ros_Sub

@@ -53,7 +53,7 @@ namespace ros_pub{
             uav_dist_to_waypoint_publisher_.publish(dist_msg);
         }
         catch {
-            ROS_ERROR("Exception caught during publishing topic %s.", uav_dist_to_waypoint_publisher_.getTopic().c_str()")
+            ROS_ERROR("Exception caught during publishing topic %s.", uav_dist_to_waypoint_publisher_.getTopic().c_str())
         }
     }
 
