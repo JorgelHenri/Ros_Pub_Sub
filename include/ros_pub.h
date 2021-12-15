@@ -1,6 +1,6 @@
 #pragma once
-#ifndef drone_trajectory_EDGE_DETECT_H
-#define drone_trajectory_EDGE_DETECT_H
+#ifndef ROS_PUB_H
+#define ROS_PUB_H
 
 /**
  *INCLUDE 
