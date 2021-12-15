@@ -22,7 +22,7 @@
 /** Mensagens Include **/
 #include <nav_msgs/Odometry.h>
 #include <mrs_msgs/Float64Stamped.h>
-#include "DistTarget.h"
+#include <ros_pub_sub/DistTarget.h>
 
 
 namespace ros_pub{
@@ -31,7 +31,7 @@ namespace ros_pub{
             virtual void onInit();
         private:
             /** Topicos UAV **/
-            mrs_lib::SubscribeHandler <nav_msgs::Odometry> sh_odometry_;
+            mrs_lib::SubscribeHandler<nav_msgs::Odometry>                  sh_odometry_;
             ros::Publisher uav_dist_to_waypoint_publisher_;
             
             /** Funcion Callback **/

@@ -20,23 +20,23 @@
     <arg     if="$(arg standalone)" name="nodelet_manager" value=""/>
   
     <group ns="$(arg UAV_NAME)">
-      <node pkg="nodelet" type="nodelet" name="Ros_Pub" args="$(arg nodelet) ros_pub/Ros_Pub $(arg nodelet_manager)" launch-prefix="$(arg launch_prefix_debug)" output="screen">
+        <node pkg="nodelet" type="nodelet" name="Ros_Pub" args="$(arg nodelet) ros_pub/Ros_Pub $(arg nodelet_manager)" launch-prefix="$(arg launch_prefix_debug)" output="screen">
+    
+              <!-- ROS parameters config file -->
+              <param name="uav_name" value="$(arg UAV_NAME)" />
+              <param name="target_x" value="$(arg X)" />
+              <param name="target_y" value="$(arg Y)" />
+              <param name="target_z" value="$(arg Z)" />
   
-            <!-- ROS parameters config file -->
-            <param name="uav_name" value="$(arg UAV_NAME)" />
-            <param name="X" value="$(arg target_x)" />
-            <param name="Y" value="$(arg target_y)" />
-            <param name="Z" value="$(arg target_z)" />
-
-            <!-- Subscribers (note that the topic names will also be remapped using the namespace as a prefix) -->
-            <remap from="~odom_uav_in" to="odometry/odom_main"/>
-
-            <!-- Publishers (note that the topic names will also be remapped using the namespace as a prefix) -->
-            <remap from="~dist_to_target_out" to="~dist_to_target" />
-        
-        </node>
+              <!-- Subscribers (note that the topic names will also be remapped using the namespace as a prefix) -->
+              <remap from="~odom_uav_in" to="odometry/odom_main"/>
+  
+              <!-- Publishers (note that the topic names will also be remapped using the namespace as a prefix) -->
+              <remap from="~dist_to_target_out" to="~dist_to_target" />
+          
+          </node>
     </group>
-
+    
     <group ns="$(arg UAV_NAME)">
         <node pkg="nodelet" type="nodelet" name="Ros_Sub" args="$(arg nodelet) ros_sub/Ros_Sub $(arg nodelet_manager)" launch-prefix="$(arg launch_prefix_debug)" output="screen">
     
@@ -44,7 +44,7 @@
             <param name="uav_name" value="$(arg UAV_NAME)" />
   
             <!-- Subscribers (note that the topic names will also be remapped using the namespace as a prefix) -->
-            <remap from="~dist_to_target_in" to="ros_pub/dist_to_target"/>
+            <remap from="~dist_to_target_in" to="Ros_Pub/dist_to_target"/>
         
         </node>
     </group>

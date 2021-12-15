@@ -17,14 +17,14 @@ find_package(catkin REQUIRED COMPONENTS
     std_msgs
     )
 
-add_service_files(
+add_message_files(
   FILES
-  DistTarget.srv
+  DistTarget.msg
 )
 
 generate_messages(
   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
+   std_msgs  # Or other packages containing msgs
 )
 
 find_package(Eigen3 REQUIRED)
@@ -33,7 +33,7 @@ set(Eigen_LIBRARIES ${Eigen_LIBRARIES})
     
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES Ros_Pub_Sub
+  LIBRARIES ros_pub_sub
   CATKIN_DEPENDS rospy message_runtime roscpp mrs_lib mrs_msgs geometry_msgs nav_msgs
   DEPENDS Eigen
   )
@@ -49,18 +49,16 @@ include_directories(
   )
 
 ## Declare a C++ library
-add_library(ros_pub src/ros_pub.cpp)
-add_library(ros_sub src/ros_sub.cpp)
-
-## Specify libraries to link a library or executable target against
+add_library(Ros_Pub src/ros_pub.cpp)
+add_dependencies(Ros_Pub ${catkin_EXPORTED_TARGETS})
 target_link_libraries(Ros_Pub
   ${catkin_LIBRARIES}
   ${Eigen_LIBRARIES}
 )
 
-## Specify libraries to link a library or executable target against
+add_library(Ros_Sub src/ros_sub.cpp)
+add_dependencies(Ros_Sub ${catkin_EXPORTED_TARGETS})
 target_link_libraries(Ros_Sub
   ${catkin_LIBRARIES}
   ${Eigen_LIBRARIES}
 )
- 

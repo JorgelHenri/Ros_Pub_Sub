@@ -5,7 +5,7 @@
 </library>
 
 <library path="lib/libRos_Sub">
-    <class name="ros_pub/Ros_Sub" type="ros_sub::Ros_Sub" base_class_type="nodelet::Nodelet">
+    <class name="ros_sub/Ros_Sub" type="ros_sub::Ros_Sub" base_class_type="nodelet::Nodelet">
         <description>Ros_Sub nodelet</description>
     </class>
 </library>
