@@ -1,7 +1,7 @@
 #include <ros_pub.h>
 
 namespace ros_pub{
-    void RosPub::onInit(){
+    void Ros_Pub::onInit(){
         ros::NodeHandle nh("~");
         ros::Time::waitForValid();
 
@@ -72,3 +72,4 @@ namespace ros_pub{
     }
 
 }
+PLUGINLIB_EXPORT_CLASS(ros_pub::RosPub, nodelet::Nodelet);

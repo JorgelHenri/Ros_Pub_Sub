@@ -26,7 +26,7 @@
 
 
 namespace ros_pub{
-    class RosPub:public nodelet::Nodelet{
+    class Ros_Pub:public nodelet::Nodelet{
         public:
             virtual void onInit();
         private:
