@@ -1,7 +1,7 @@
-#include <ros_pub.h>
+#include <ros_sub.h>
 #include <pluginlib/class_list_macros.h>
 
-namespace ros_pub
+namespace ros_sub
 {
     /*onInit() */
 void Ros_Sub::onInit(){
@@ -22,7 +22,7 @@ void Ros_Sub::onInit(){
 
     mrs_lib::SubscribeHandlerOptions shopts;
     shopts.nh                 = nh;
-    shopts.node_name          = "Ros_Pub";
+    shopts.node_name          = "Ros_Sub";
     shopts.no_message_timeout = ros::Duration(1.0);
     shopts.threadsafe         = true;
     shopts.autostart          = true;
@@ -49,7 +49,19 @@ void WaypointFlier::callbackTimerPublishDistToWaypoint([[maybe_unused]] const ro
         return;
     }
 
-    target_dist = mrs_lib::getPose(sh_odometry_.getMsg());
+    ros_pub_sub::DistTarget dist = sh.getMsg();
+
+    pose_x = dist->x;
+    pose_y = dist->x;
+    pose_z = dist->x;
+    distance = dist->dist;
+    ROS_INFO("[Ros_Sub]: Distance to target: %.2f", dist);
+    ROS_INFO("[Ros_Sub]: Target pose: x:%.2f y:%.2f z:%.2f", pose_x, pose_y, pose_z);
 
 }
-}
+
+}  // namespace ros_pub
+
+/* every nodelet must include macros which export the class as a nodelet plugin */
+#include <pluginlib/class_list_macros.h>
+PLUGINLIB_EXPORT_CLASS(ros_sub::Ros_Sub, nodelet::Nodelet);
