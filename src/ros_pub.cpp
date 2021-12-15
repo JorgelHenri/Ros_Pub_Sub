@@ -1,7 +1,7 @@
 #include <ros_pub.h>
 
 namespace ros_pub{
-    void RosPub::onInit(){
+    void Ros_Pub::onInit(){
         ros::NodeHandle nh("~");
         ros::Time::waitForValid();
 
@@ -53,7 +53,7 @@ namespace ros_pub{
             uav_dist_to_waypoint_publisher_.publish(dist_msg);
         }
         catch {
-            ROS_ERROR("Exception caught during publishing topic %s.", uav_dist_to_waypoint_publisher_.getTopic().c_str()")
+            ROS_ERROR("Exception caught during publishing topic %s.", uav_dist_to_waypoint_publisher_.getTopic().c_str())
         }
     }
 
@@ -72,3 +72,4 @@ namespace ros_pub{
     }
 
 }
+PLUGINLIB_EXPORT_CLASS(ros_pub::RosPub, nodelet::Nodelet);
