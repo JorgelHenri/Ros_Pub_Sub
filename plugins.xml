@@ -1,8 +1,8 @@
-<library path="lib/libRos_Pub">
+<!-- <library path="lib/libRos_Pub">
     <class name="ros_pub/Ros_Pub" type="ros_pub::Ros_Pub" base_class_type="nodelet::Nodelet">
       <description>Ros_Pub nodelet</description>
     </class>
-</library>
+</library> -->
 
 <library path="lib/libRos_Sub">
     <class name="ros_pub/Ros_Sub" type="ros_sub::Ros_Sub" base_class_type="nodelet::Nodelet">
